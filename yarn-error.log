@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/edwardsztukowski/.nvm/versions/node/v10.0.0/bin/node /Users/edwardsztukowski/.nvm/versions/node/v10.0.0/bin/yarn add extract-text-webpck-plugin@3.0.0
+  /Users/edwardsztukowski/.nvm/versions/node/v10.0.0/bin/node /Users/edwardsztukowski/.nvm/versions/node/v10.0.0/bin/yarn add chalk --dev
 
 PATH: 
   /Users/edwardsztukowski/.nvm/versions/node/v10.0.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin
@@ -14,17 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/extract-text-webpck-plugin: Not found
-      at Request.params.callback [as _callback] (/Users/edwardsztukowski/.nvm/versions/node/v10.0.0/lib/node_modules/yarn/lib/cli.js:65327:18)
-      at Request.self.callback (/Users/edwardsztukowski/.nvm/versions/node/v10.0.0/lib/node_modules/yarn/lib/cli.js:133155:22)
-      at Request.emit (events.js:182:13)
-      at Request.<anonymous> (/Users/edwardsztukowski/.nvm/versions/node/v10.0.0/lib/node_modules/yarn/lib/cli.js:134138:10)
-      at Request.emit (events.js:182:13)
-      at IncomingMessage.<anonymous> (/Users/edwardsztukowski/.nvm/versions/node/v10.0.0/lib/node_modules/yarn/lib/cli.js:134058:12)
-      at Object.onceWrapper (events.js:275:13)
-      at IncomingMessage.emit (events.js:187:15)
-      at endReadableNT (_stream_readable.js:1091:14)
-      at process._tickCallback (internal/process/next_tick.js:174:19)
+  Error: EACCES: permission denied, unlink '/Users/edwardsztukowski/udemy/react/expensify-app/node_modules/node-notifier/vendor/terminal-notifier.app/Contents/Info.plist'
 
 npm manifest: 
   {
@@ -38,7 +28,9 @@ npm manifest:
       "build:dev": "webpack",
       "build:prod": "webpack -p --env production",
       "dev-server": "webpack-dev-server",
-      "test": "jest --config=jest.config.json"
+      "test": "jest --config=jest.config.json",
+      "start": "node server/server.js",
+      "heroku-postbuild" : "yarn run build:prod"
     },
     "dependencies": {
       "babel-cli": "6.24.1",
@@ -51,6 +43,8 @@ npm manifest:
       "css-loader": "0.28.4",
       "enzyme": "2.9.1",
       "enzyme-to-json": "1.5.1",
+      "express": "4.15.4",
+      "extract-text-webpack-plugin": "3.0.0",
       "jest": "20.0.4",
       "live-server": "^1.2.0",
       "moment": "2.18.1",
@@ -326,6 +320,12 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
     dependencies:
       lodash "^4.14.0"
+  
+  async@^2.4.1:
+    version "2.6.1"
+    resolved "https://registry.yarnpkg.com/async/-/async-2.6.1.tgz#b245a23ca71930044ec53fa46aa00a3e87c6a610"
+    dependencies:
+      lodash "^4.17.10"
   
   asynckit@^0.4.0:
     version "0.4.0"
@@ -1676,6 +1676,12 @@ Lockfile:
     dependencies:
       ms "2.0.0"
   
+  debug@2.6.9:
+    version "2.6.9"
+    resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
+    dependencies:
+      ms "2.0.0"
+  
   debug@~2.2.0:
     version "2.2.0"
     resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
@@ -1737,6 +1743,10 @@ Lockfile:
   depd@1.1.0, depd@~1.1.0:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.0.tgz#e1bd82c6aab6ced965b97b88b17ed3e528ca18c3"
+  
+  depd@~1.1.1, depd@~1.1.2:
+    version "1.1.2"
+    resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   
   des.js@^1.0.0:
     version "1.0.0"
@@ -2102,6 +2112,39 @@ Lockfile:
     dependencies:
       fill-range "^2.1.0"
   
+  express@4.15.4:
+    version "4.15.4"
+    resolved "https://registry.yarnpkg.com/express/-/express-4.15.4.tgz#032e2253489cf8fce02666beca3d11ed7a2daed1"
+    dependencies:
+      accepts "~1.3.3"
+      array-flatten "1.1.1"
+      content-disposition "0.5.2"
+      content-type "~1.0.2"
+      cookie "0.3.1"
+      cookie-signature "1.0.6"
+      debug "2.6.8"
+      depd "~1.1.1"
+      encodeurl "~1.0.1"
+      escape-html "~1.0.3"
+      etag "~1.8.0"
+      finalhandler "~1.0.4"
+      fresh "0.5.0"
+      merge-descriptors "1.0.1"
+      methods "~1.1.2"
+      on-finished "~2.3.0"
+      parseurl "~1.3.1"
+      path-to-regexp "0.1.7"
+      proxy-addr "~1.1.5"
+      qs "6.5.0"
+      range-parser "~1.2.0"
+      send "0.15.4"
+      serve-static "1.12.4"
+      setprototypeof "1.0.3"
+      statuses "~1.3.1"
+      type-is "~1.6.15"
+      utils-merge "1.0.0"
+      vary "~1.1.1"
+  
   express@^4.13.3:
     version "4.15.3"
     resolved "https://registry.yarnpkg.com/express/-/express-4.15.3.tgz#bab65d0f03aa80c358408972fc700f916944b662"
@@ -2144,6 +2187,15 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/extglob/-/extglob-0.3.2.tgz#2e18ff3d2f49ab2765cec9023f011daa8d8349a1"
     dependencies:
       is-extglob "^1.0.0"
+  
+  extract-text-webpack-plugin@3.0.0:
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.0.tgz#90caa7907bc449f335005e3ac7532b41b00de612"
+    dependencies:
+      async "^2.4.1"
+      loader-utils "^1.1.0"
+      schema-utils "^0.3.0"
+      webpack-sources "^1.0.1"
   
   extsprintf@1.0.2:
     version "1.0.2"
@@ -2237,6 +2289,18 @@ Lockfile:
       escape-html "~1.0.3"
       on-finished "~2.3.0"
       parseurl "~1.3.1"
+      statuses "~1.3.1"
+      unpipe "~1.0.0"
+  
+  finalhandler@~1.0.4:
+    version "1.0.6"
+    resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.0.6.tgz#007aea33d1a4d3e42017f624848ad58d212f814f"
+    dependencies:
+      debug "2.6.9"
+      encodeurl "~1.0.1"
+      escape-html "~1.0.3"
+      on-finished "~2.3.0"
+      parseurl "~1.3.2"
       statuses "~1.3.1"
       unpipe "~1.0.0"
   
@@ -2608,6 +2672,15 @@ Lockfile:
       setprototypeof "1.0.3"
       statuses ">= 1.3.1 < 2"
   
+  http-errors@~1.6.2:
+    version "1.6.3"
+    resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.6.3.tgz#8b55680bb4be283a0b5bf4ea2e38580be1d9320d"
+    dependencies:
+      depd "~1.1.2"
+      inherits "2.0.3"
+      setprototypeof "1.1.0"
+      statuses ">= 1.4.0 < 2"
+  
   http-proxy-middleware@~0.17.4:
     version "0.17.4"
     resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-0.17.4.tgz#642e8848851d66f09d4f124912846dbaeb41b833"
@@ -2718,6 +2791,10 @@ Lockfile:
   ipaddr.js@1.3.0:
     version "1.3.0"
     resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.3.0.tgz#1e03a52fdad83a8bbb2b25cbf4998b4cffcd3dec"
+  
+  ipaddr.js@1.4.0:
+    version "1.4.0"
+    resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.4.0.tgz#296aca878a821816e5b85d0a285a99bcff4582f0"
   
   is-absolute-url@^2.0.0:
     version "2.1.0"
@@ -3480,6 +3557,10 @@ Lockfile:
     version "4.17.4"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
   
+  lodash@^4.17.10:
+    version "4.17.10"
+    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
+  
   longest@^1.0.1:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
@@ -4062,6 +4143,10 @@ Lockfile:
     version "1.3.1"
     resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.1.tgz#c8ab8c9223ba34888aa64a297b28853bec18da56"
   
+  parseurl@~1.3.2:
+    version "1.3.2"
+    resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.2.tgz#fc289d4ed8993119460c156253262cdc8de65bf3"
+  
   path-browserify@0.0.0:
     version "0.0.0"
     resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-0.0.0.tgz#a0b870729aae214005b7d5032ec2cbbb0fb4451a"
@@ -4462,6 +4547,13 @@ Lockfile:
       forwarded "~0.1.0"
       ipaddr.js "1.3.0"
   
+  proxy-addr@~1.1.5:
+    version "1.1.5"
+    resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-1.1.5.tgz#71c0ee3b102de3f202f3b64f608d173fcba1a918"
+    dependencies:
+      forwarded "~0.1.0"
+      ipaddr.js "1.4.0"
+  
   proxy-middleware@latest:
     version "0.15.0"
     resolved "https://registry.yarnpkg.com/proxy-middleware/-/proxy-middleware-0.15.0.tgz#a3fdf1befb730f951965872ac2f6074c61477a56"
@@ -4499,6 +4591,10 @@ Lockfile:
   qs@6.4.0, qs@~6.4.0:
     version "6.4.0"
     resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
+  
+  qs@6.5.0:
+    version "6.5.0"
+    resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.0.tgz#8d04954d364def3efc55b5a0793e1e2c8b1e6e49"
   
   query-string@^4.1.0:
     version "4.3.4"
@@ -4943,6 +5039,24 @@ Lockfile:
       range-parser "~1.2.0"
       statuses "~1.3.1"
   
+  send@0.15.4:
+    version "0.15.4"
+    resolved "https://registry.yarnpkg.com/send/-/send-0.15.4.tgz#985faa3e284b0273c793364a35c6737bd93905b9"
+    dependencies:
+      debug "2.6.8"
+      depd "~1.1.1"
+      destroy "~1.0.4"
+      encodeurl "~1.0.1"
+      escape-html "~1.0.3"
+      etag "~1.8.0"
+      fresh "0.5.0"
+      http-errors "~1.6.2"
+      mime "1.3.4"
+      ms "2.0.0"
+      on-finished "~2.3.0"
+      range-parser "~1.2.0"
+      statuses "~1.3.1"
+  
   serve-index@^1.7.2:
     version "1.9.0"
     resolved "https://registry.yarnpkg.com/serve-index/-/serve-index-1.9.0.tgz#d2b280fc560d616ee81b48bf0fa82abed2485ce7"
@@ -4964,6 +5078,15 @@ Lockfile:
       parseurl "~1.3.1"
       send "0.15.3"
   
+  serve-static@1.12.4:
+    version "1.12.4"
+    resolved "https://registry.yarnpkg.com/serve-static/-/serve-static-1.12.4.tgz#9b6aa98eeb7253c4eedc4c1f6fdbca609901a961"
+    dependencies:
+      encodeurl "~1.0.1"
+      escape-html "~1.0.3"
+      parseurl "~1.3.1"
+      send "0.15.4"
+  
   set-blocking@^2.0.0, set-blocking@~2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
@@ -4979,6 +5102,10 @@ Lockfile:
   setprototypeof@1.0.3:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.0.3.tgz#66567e37043eeb4f04d91bd658c0cbefb55b8e04"
+  
+  setprototypeof@1.1.0:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
   
   sha.js@^2.4.0, sha.js@^2.4.8:
     version "2.4.8"
@@ -5131,6 +5258,10 @@ Lockfile:
   "statuses@>= 1.3.1 < 2", statuses@~1.3.1:
     version "1.3.1"
     resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.3.1.tgz#faf51b9eb74aaef3b3acf4ad5f61abf24cb7b93e"
+  
+  "statuses@>= 1.4.0 < 2":
+    version "1.5.0"
+    resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   
   stdout-stream@^1.4.0:
     version "1.4.0"
