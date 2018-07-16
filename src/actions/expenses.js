@@ -51,3 +51,28 @@ export const editExpense = (id, updates) => ({
   id,
   updates
 });
+
+// SET_EXPENSES
+export const setExpenses = (expenses) => ({
+  type: "SET_EXPENSES",
+  expenses
+})
+
+// START_SET_EXPENSES
+//fetch all expense data
+//parse data into an array (check firebase js file)
+//dispatch set_expenses
+export const startSetExpenses = () => {
+  return (dispatch) => {
+    return database.ref('expenses').once('value').then((snapshot) => {
+      let expenses = [];
+      snapshot.forEach((currentExpense) => {
+          expenses.push({
+              id: currentExpense.key,
+              ...currentExpense.val()            
+          })
+      })
+      dispatch(setExpenses(expenses));
+    });
+  }
+}
