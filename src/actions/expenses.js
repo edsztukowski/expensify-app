@@ -1,19 +1,6 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
 
-// BEFORE FIREBASE
-// component calls action generator
-// action generator returns object
-// component dispatches object
-// redux store changes
-
-
-// AFTER FIREBASE
-// components call action Generator
-// action generator returns function
-// component dispatches function (?) -> need module
-// function runs (has ability to dispatch other actions and do whatever it wants)
-
 // ADD_EXPENSE
 export const addExpense = (expense) => ({
   type: 'ADD_EXPENSE',
@@ -75,9 +62,6 @@ export const setExpenses = (expenses) => ({
 })
 
 // START_SET_EXPENSES
-//fetch all expense data
-//parse data into an array (check firebase js file)
-//dispatch set_expenses
 export const startSetExpenses = () => {
   return (dispatch) => {
     return database.ref('expenses').once('value').then((snapshot) => {

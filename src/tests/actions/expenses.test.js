@@ -64,10 +64,11 @@ test('should edit expense in firebase', (done) => {
     });
     return database.ref(`expenses/${id}`).once('value');
   }).then((snapshot) => {
-    expect(snapshot.val()).description.toBe(updates.description);
+    expect(snapshot.val().description).toBe(updates.description);
     done();
   })
 })
+
 
 test('should setup add expense action object with provided values', () => {
   const action = addExpense(expenses[2]);
