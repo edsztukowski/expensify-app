@@ -3,12 +3,7 @@
 exports[`should render LoginPage correctly 1`] = `
 <div>
   <button>
-    <Link
-      replace={false}
-      to="/dashboard"
-    >
-      LOGIN
-    </Link>
+    Login
   </button>
 </div>
 `;
