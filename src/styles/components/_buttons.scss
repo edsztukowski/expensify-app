@@ -1,0 +1,20 @@
+.button__blue {
+    background: $sky-blue;
+    color: #fff;
+    padding: $s-size;
+    font-weight: 300;
+    border: none;
+    font-size: $font-size-large;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.button__red {
+    @extend .button__blue;
+    background: $error-red;
+
+}
+.button--link {
+    background: none;
+}

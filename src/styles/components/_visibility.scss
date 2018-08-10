@@ -1,0 +1,11 @@
+.show-mobile {
+    @media screen and (min-width: $desktop-breakpoint) {
+        display: none;
+    }
+}
+
+.show-desktop {
+    @media screen and (max-width: $desktop-breakpoint) {
+        display: none;
+    }
+}
